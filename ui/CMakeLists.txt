@@ -1,0 +1,16 @@
+SET(SOURCES components/ui_comp_colonlabel.c
+    components/ui_comp.c
+    screens/ui_MainView.c
+    screens/ui_FitnessActivityView.c
+    ui_theme_manager.c
+    ui_themes.c
+    ui.c
+    components/ui_comp_hook.c
+    ui_helpers.c
+    ui_events.c
+    images/ui_img_412866793.c
+    images/ui_img_preview_png.c
+    fonts/ui_font_QuantifyFont_16.c
+    fonts/ui_font_QuantifyFont_70.c)
+
+add_library(ui ${SOURCES})
