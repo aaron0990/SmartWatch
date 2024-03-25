@@ -11,6 +11,7 @@
 class IObserver {
 public:
 	IObserver();
+	virtual void update() = 0;
 	virtual ~IObserver();
 };
 

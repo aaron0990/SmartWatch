@@ -35,3 +35,6 @@ void Controller::initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time,
 		uint32_t delay) {
 	view->initScreenWithAnim(anim_type, time, delay);
 }
+
+void Controller::update() {
+}

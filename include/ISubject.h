@@ -8,9 +8,14 @@
 #ifndef SRC_ISUBJECT_H_
 #define SRC_ISUBJECT_H_
 
+#include "IObserver.h"
+
 class ISubject {
 public:
 	ISubject();
+	virtual void attach(IObserver *observer) = 0;
+	virtual void detach(IObserver *observer) = 0;
+	virtual void notify() = 0;
 	virtual ~ISubject();
 };
 

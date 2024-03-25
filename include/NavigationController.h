@@ -23,6 +23,8 @@ public:
 	virtual ~NavigationController() = default;
 	void changeScreen(ViewID view_id, lv_event_code_t event_code, uint8_t direction);
 	void addController(std::shared_ptr<Controller> controller);
+	void update() override;
+
 private:
 	std::map<ControllerID, std::shared_ptr<Controller> > ctrl_map;
 };

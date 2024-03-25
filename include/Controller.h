@@ -12,6 +12,7 @@
 #include "IObserver.h"
 #include "NavigationController.h"
 #include "View.h"
+#include "ISubject.h"
 
 enum class ControllerID {
 	TIME_CTRLR = 0,
@@ -28,9 +29,12 @@ public:
 	virtual void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay);
 	ControllerID getControllerID();
 	virtual ~Controller();
+	void update() override;
+
 protected:
 	std::shared_ptr<NavigationController> navigationController;
 	std::shared_ptr<View> view;
+	ISubject* subject;
 
 private:
 	ControllerID controller_id;

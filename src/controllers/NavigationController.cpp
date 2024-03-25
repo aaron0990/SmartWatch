@@ -64,3 +64,6 @@ void NavigationController::addController(std::shared_ptr<Controller> controller)
 {
 	ctrl_map[controller->getControllerID()] = controller;
 }
+
+void NavigationController::update() {
+}

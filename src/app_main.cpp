@@ -69,10 +69,10 @@ extern "C" void app_main(void)
 	weatherController->setView(weatherView);
 	fitnessActivityController->setView(fitnessActivityView);
 
-	Time time;
+	/*Time time;
 	FitnessActivity fitnessActivity;
 	Weather weather;
-	Notification notification;
+	Notification notification;*/
 
     timeController->initView();
 

@@ -5,7 +5,7 @@
  *      Author: root
  */
 
-#include <driver/i2c.h>
+
 #include "LCDManager.h"
 
 static const char* TAG = "LCDManager";

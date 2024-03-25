@@ -22,3 +22,6 @@ ViewID View::getViewID()
 {
 	return view_id;
 }
+
+void View::update() {
+}

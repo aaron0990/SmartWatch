@@ -31,6 +31,8 @@ public:
 	virtual void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay) = 0;
 	virtual void initView() = 0;
 	virtual ~View();
+	void update() override;
+
 private:
 	ViewID view_id;
 };
