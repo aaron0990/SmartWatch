@@ -5,12 +5,11 @@
  *      Author: root
  */
 
+#include <esp_log.h>
 #include "FitnessActivityController.h"
 
 FitnessActivityController::FitnessActivityController(
-		NavigationController &navCtrlr,
-		FitnessActivityView &fitnessActivityView) :
-		navigationController(navCtrlr), fitnessActivityView(fitnessActivityView)
+		std::shared_ptr<NavigationController> navigationController): Controller(ControllerID::ACTIVITY_CTRLR, navigationController)
 {
 
 }
@@ -19,21 +18,18 @@ FitnessActivityController::~FitnessActivityController() {
 	// TODO Auto-generated destructor stub
 }
 
-void FitnessActivityController::initScreenWithAnim(lv_scr_load_anim_t anim_type,
-		uint32_t time, uint32_t delay) {
-	fitnessActivityView.initScreenWithAnim(anim_type, time, delay);
-}
-
 void FitnessActivityController::event_FitnessActivityView(lv_event_t *e) {
 	lv_event_code_t event_code = lv_event_get_code(e);
 	lv_obj_t *target = lv_event_get_target(e);
-	if (event_code == LV_EVENT_GESTURE && lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_LEFT)
+	if (event_code == LV_EVENT_GESTURE && lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_RIGHT)
 	{
+		ESP_LOGI("FitnessActivityController", "event_FitnessActivityView");
 		lv_indev_wait_release(lv_indev_get_act());
-		navigationController.changeScreen(fitnessActivityView.get_view_id(),
-				LV_EVENT_GESTURE, LV_DIR_LEFT);
+		navigationController->changeScreen(view->getViewID(),
+				LV_EVENT_GESTURE, LV_DIR_RIGHT);
 	}
 }
+
 
 void FitnessActivityController::event_FitnessActivityView_wrapper(
 		lv_event_t *e) {

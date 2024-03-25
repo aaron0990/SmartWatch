@@ -14,14 +14,14 @@ class FitnessActivityController;
 
 class FitnessActivityView: public View {
 public:
-	FitnessActivityView(FitnessActivityController* fitnessActivityController);
+	FitnessActivityView(std::shared_ptr<FitnessActivityController> fitnessActivityController);
 	virtual ~FitnessActivityView();
-	void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay);
+	void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay) override;
 	void initView() override;
 	static void initViewWrapper();
 
 private:
-	FitnessActivityController* fitnessActivityController;
+	std::shared_ptr<FitnessActivityController> fitnessActivityController;
 	lv_obj_t * ui_FitnessActivityView;
 	lv_obj_t * ui_stepsStrLabel;
 	lv_obj_t * ui_stepsLabel;

@@ -5,18 +5,19 @@
  *      Author: root
  */
 
+#include <esp_log.h>
 #include "TimeController.h"
 #include "MainView.h"
 
 
-TimeController::TimeController(NavigationController &navCtrl, MainView& mainView) :
-		mainView(mainView), navigationController(navCtrl)
+TimeController::TimeController(std::shared_ptr<NavigationController> navCtrl) : Controller(ControllerID::TIME_CTRLR, navCtrl)
 {
 
 }
 
 
 void TimeController::event_MainView_wrapper(lv_event_t *e) {
+
 	TimeController* timeController = reinterpret_cast<TimeController*>(e->user_data);
 	timeController->event_MainView(e);
 }
@@ -26,13 +27,12 @@ void TimeController::event_MainView(lv_event_t *e) {
 	lv_obj_t * target = lv_event_get_target(e);
 	if(event_code == LV_EVENT_GESTURE && lv_indev_get_gesture_dir(lv_indev_get_act()) == LV_DIR_LEFT)
 	{
+		ESP_LOGI("TimeController", "event_MainView");
 		lv_indev_wait_release(lv_indev_get_act());
-		navigationController.changeScreen(mainView.get_view_id(), LV_EVENT_GESTURE, LV_DIR_LEFT);
+		navigationController->changeScreen(view->getViewID(), LV_EVENT_GESTURE, LV_DIR_LEFT);
 	}
 }
 
-void TimeController::initScreenWithAnim(lv_scr_load_anim_t anim_type,
-		uint32_t time, uint32_t delay)
-{
-	mainView.initScreenWithAnim(anim_type, time, delay);
+
+TimeController::~TimeController() {
 }

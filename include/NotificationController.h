@@ -8,21 +8,16 @@
 #ifndef SRC_CONTROLLERS_NOTIFICATIONCONTROLLER_H_
 #define SRC_CONTROLLERS_NOTIFICATIONCONTROLLER_H_
 
-#include "IObserver.h"
+#include "Controller.h"
 #include "NavigationController.h"
+#include "NotificationView.h"
 
-class NotificationView;
-
-class NotificationController: public IObserver {
+class NotificationController: public Controller {
 public:
-	NotificationController(NavigationController &navCtrlr,
-			NotificationView &notificationView);
+	NotificationController(std::shared_ptr<NavigationController> navigationController);
 	virtual ~NotificationController();
-	void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay);
 
 private:
-	NotificationView& notificationView;
-	NavigationController& navigationController;
 
 };
 

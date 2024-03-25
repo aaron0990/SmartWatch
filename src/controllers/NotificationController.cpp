@@ -9,16 +9,11 @@
 #include "NotificationView.h"
 
 
-NotificationController::NotificationController(NavigationController &navCtrlr,
-		NotificationView &notificationView) : notificationView(notificationView), navigationController(navCtrlr) {
+NotificationController::NotificationController(std::shared_ptr<NavigationController> navigationController) : Controller(ControllerID::NOTIFICATION_CTRLR, navigationController) {
 	// TODO Auto-generated constructor stub
 
 }
 
-void NotificationController::initScreenWithAnim(lv_scr_load_anim_t anim_type,
-		uint32_t time, uint32_t delay) {
-	notificationView.initScreenWithAnim(anim_type, time, delay);
-}
 
 NotificationController::~NotificationController() {
 	// TODO Auto-generated destructor stub

@@ -9,7 +9,6 @@
 #define SRC_MAINVIEW_H_
 
 #include "View.h"
-#include "TimeController.h"
 
 LV_IMG_DECLARE(ui_img_BLEIcon)
 
@@ -17,16 +16,17 @@ LV_IMG_DECLARE(ui_img_BLEIcon)
  * Si se quieren varias vistas alternativas de fecha y hora para tener diseños distintos, se puede usar un patron estrategia y
  * haciendo esta misma clase abstracta y luego hacer subclases con distintos diseños (p.e. MainViewAnalogic, MainViewDigital, etc)
  */
+class TimeController;
 
 class MainView: public View {
 public:
-	MainView(TimeController* timeController);
-	virtual void initView() = 0;
+	MainView(std::shared_ptr<TimeController> timeController);
+	void initView() override;
 	static void initViewWrapper();
-	void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay);
+	void initScreenWithAnim(lv_scr_load_anim_t anim_type, uint32_t time, uint32_t delay) override;
 	virtual ~MainView();
 private:
-	TimeController* timeController;
+	std::shared_ptr<TimeController> timeController;
 
 	lv_obj_t * ui_MainView;
 	lv_obj_t * ui_topContainer;

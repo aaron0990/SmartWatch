@@ -1,6 +1,5 @@
 idf_component_register(
-    SRCS "spi_lcd_touch_example_main.cpp"
-         "lvgl_demo_ui.c"
+    SRCS "app_main.cpp"
          "common/IObserver.cpp"
          "common/ISubject.cpp"
          "views/FitnessActivityView.cpp"
@@ -14,6 +13,7 @@ idf_component_register(
 		 "views/images/ui_img_bleIcon.c"
 		 "views/themes/ui_theme_manager.c"
 		 "views/themes/ui_themes.c"
+		 "model/LCDManager.cpp"
 		 "model/BluetoothManager.cpp"
 		 "model/FitnessActivity.cpp"
 		 "model/Weather.cpp"
@@ -24,6 +24,7 @@ idf_component_register(
 		 "controllers/NotificationController.cpp"
 		 "controllers/TimeController.cpp"
 		 "controllers/NavigationController.cpp"
+		 "controllers/Controller.cpp"
 	INCLUDE_DIRS "."
 		 "../include"
 		 

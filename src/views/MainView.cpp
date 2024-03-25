@@ -9,7 +9,7 @@
 #include "TimeController.h"
 
 
-MainView::MainView(TimeController* timeController) : View(MAIN_VIEW), timeController(timeController)
+MainView::MainView(std::shared_ptr<TimeController> timeController) : View(ViewID::MAIN_VIEW), timeController(timeController)
 {
 	//initialize member variables
 	ui_MainView = nullptr;
@@ -34,7 +34,9 @@ MainView::~MainView() {
 void MainView::initScreenWithAnim(lv_scr_load_anim_t anim_type,
 		uint32_t time, uint32_t delay)
 {
-	//mainView.initScreenWithAnim(anim_type, time, delay);
+	if (!ui_MainView)
+		initView();
+	lv_scr_load_anim(ui_MainView, anim_type, time, delay, false);
 }
 
 void MainView::initView() {
@@ -190,6 +192,7 @@ void MainView::initView() {
 	    ui_object_set_themeable_style_property(ui_dowLabel, LV_PART_MAIN | LV_STATE_DEFAULT, LV_STYLE_TEXT_OPA,
 	                                           _ui_theme_alpha_sunset_glow);
 	    lv_obj_set_style_text_font(ui_dowLabel, &ui_font_QuantifyFont_16, LV_PART_MAIN | LV_STATE_DEFAULT);
-	    lv_obj_add_event_cb(ui_MainView, timeController->event_MainView_wrapper, LV_EVENT_ALL, timeController);
+	    lv_obj_add_event_cb(ui_MainView, timeController->event_MainView_wrapper, LV_EVENT_ALL, timeController.get());
+	    lv_disp_load_scr(ui_MainView);
 }
 

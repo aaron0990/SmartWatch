@@ -7,17 +7,10 @@
 
 #include "WeatherController.h"
 
-WeatherController::WeatherController(NavigationController &navCtrlr,
-		WeatherView &weatherView) : navigationController(navCtrlr), weatherView(weatherView)
+WeatherController::WeatherController(std::shared_ptr<NavigationController> navigationController) : Controller(ControllerID::WEATHER_CTRLR, navigationController)
 {
 	// TODO Auto-generated constructor stub
 
-}
-
-void WeatherController::initScreenWithAnim(lv_scr_load_anim_t anim_type,
-		uint32_t time, uint32_t delay)
-{
-	weatherView.initScreenWithAnim(anim_type, time, delay);
 }
 
 WeatherController::~WeatherController() {

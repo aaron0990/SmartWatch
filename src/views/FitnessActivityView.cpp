@@ -8,7 +8,7 @@
 #include "FitnessActivityView.h"
 #include "FitnessActivityController.h"
 
-FitnessActivityView::FitnessActivityView(FitnessActivityController* fitnessActivityController) : View(ACTIVITY_VIEW), fitnessActivityController(fitnessActivityController)
+FitnessActivityView::FitnessActivityView(std::shared_ptr<FitnessActivityController> fitnessActivityController) : View(ViewID::ACTIVITY_VIEW), fitnessActivityController(fitnessActivityController)
 {
 	//initialize member variables
 	ui_FitnessActivityView = nullptr;
@@ -64,5 +64,5 @@ void FitnessActivityView::initView()
 										   _ui_theme_alpha_pale_spring);
 	lv_obj_set_style_text_font(ui_stepsLabel, &ui_font_QuantifyFont_70, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-	lv_obj_add_event_cb(ui_FitnessActivityView, fitnessActivityController->event_FitnessActivityView_wrapper, LV_EVENT_ALL, fitnessActivityController);
+	lv_obj_add_event_cb(ui_FitnessActivityView, fitnessActivityController->event_FitnessActivityView_wrapper, LV_EVENT_ALL, fitnessActivityController.get());
 }

@@ -8,20 +8,16 @@
 #ifndef SRC_CONTROLLERS_WEATHERCONTROLLER_H_
 #define SRC_CONTROLLERS_WEATHERCONTROLLER_H_
 
-#include "IObserver.h"
+#include "Controller.h"
 #include "WeatherView.h"
 #include "NavigationController.h"
 
-class WeatherController: public IObserver {
+class WeatherController: public Controller {
 public:
-	WeatherController(NavigationController &navCtrlr,
-			WeatherView &weatherView);
-	void initScreenWithAnim(lv_scr_load_anim_t anim_type,
-			uint32_t time, uint32_t delay);
+	WeatherController(std::shared_ptr<NavigationController> navigationController);
 	virtual ~WeatherController();
 private:
-	NavigationController &navigationController;
-	WeatherView &weatherView;
+
 };
 
 #endif /* SRC_CONTROLLERS_WEATHERCONTROLLER_H_ */

@@ -8,7 +8,7 @@
 #include "View.h"
 
 
-View::View(uint8_t view_id) : view_id(view_id)
+View::View(ViewID view_id) : view_id(view_id)
 {
 	// TODO Auto-generated constructor stub
 
@@ -18,7 +18,7 @@ View::~View() {
 	// TODO Auto-generated destructor stub
 }
 
-uint8_t View::get_view_id()
+ViewID View::getViewID()
 {
 	return view_id;
 }
