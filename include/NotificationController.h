@@ -10,14 +10,17 @@
 
 #include "Controller.h"
 #include "NavigationController.h"
+#include "Notification.h"
 #include "NotificationView.h"
 
 class NotificationController: public Controller {
 public:
 	NotificationController(std::shared_ptr<NavigationController> navigationController);
 	virtual ~NotificationController();
+	void setNotification(const std::shared_ptr<Notification> &notification);
 
 private:
+	std::shared_ptr<Notification> notification;
 
 };
 

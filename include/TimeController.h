@@ -12,6 +12,7 @@
 #include "NavigationController.h"
 #include "lvgl.h"
 #include "MainView.h"
+#include "Time.h"
 
 class TimeController: public Controller {
 public:
@@ -19,7 +20,9 @@ public:
 	virtual ~TimeController();
 	static void event_MainView_wrapper(lv_event_t* e);
 	void event_MainView(lv_event_t* e);
+	void setTime(const std::shared_ptr<Time> &time);
 private:
+	std::shared_ptr<Time> time;
 
 };
 

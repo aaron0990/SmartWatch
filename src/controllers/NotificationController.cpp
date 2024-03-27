@@ -18,3 +18,7 @@ NotificationController::NotificationController(std::shared_ptr<NavigationControl
 NotificationController::~NotificationController() {
 	// TODO Auto-generated destructor stub
 }
+
+void NotificationController::setNotification(const std::shared_ptr<Notification> &notification) {
+	this->notification = notification;
+}

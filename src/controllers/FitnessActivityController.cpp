@@ -30,6 +30,10 @@ void FitnessActivityController::event_FitnessActivityView(lv_event_t *e) {
 	}
 }
 
+void FitnessActivityController::setFitnessActivity(
+		const std::shared_ptr<FitnessActivity> &fitnessActivity) {
+	this->fitnessActivity = fitnessActivity;
+}
 
 void FitnessActivityController::event_FitnessActivityView_wrapper(
 		lv_event_t *e) {

@@ -69,10 +69,15 @@ extern "C" void app_main(void)
 	weatherController->setView(weatherView);
 	fitnessActivityController->setView(fitnessActivityView);
 
-	/*Time time;
-	FitnessActivity fitnessActivity;
-	Weather weather;
-	Notification notification;*/
+	auto time = std::make_shared<Time>();
+	auto fitnessActivity = std::make_shared<FitnessActivity>();
+	auto weather = std::make_shared<Weather>();
+	auto notification = std::make_shared<Notification>();
+
+	timeController->setTime(time);
+	fitnessActivityController->setFitnessActivity(fitnessActivity);
+	weatherController->setWeather(weather);
+	notificationController->setNotification(notification);
 
     timeController->initView();
 

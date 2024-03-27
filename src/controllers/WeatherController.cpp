@@ -17,3 +17,6 @@ WeatherController::~WeatherController() {
 	// TODO Auto-generated destructor stub
 }
 
+void WeatherController::setWeather(const std::shared_ptr<Weather> &weather) {
+	this->weather = weather;
+}

@@ -10,6 +10,7 @@
 
 #include "lvgl.h"
 #include "Controller.h"
+#include "FitnessActivity.h"
 #include "FitnessActivityView.h"
 #include "NavigationController.h"
 
@@ -19,9 +20,10 @@ public:
 	FitnessActivityController(std::shared_ptr<NavigationController> navigationController);
 	virtual ~FitnessActivityController();
 	void event_FitnessActivityView(lv_event_t *e);
+	void setFitnessActivity(const std::shared_ptr<FitnessActivity> &fitnessActivity);
 	static void event_FitnessActivityView_wrapper(lv_event_t *e);
-
 private:
+	std::shared_ptr<FitnessActivity> fitnessActivity;
 
 };
 

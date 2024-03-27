@@ -16,3 +16,11 @@ Weather::~Weather() {
 	// TODO Auto-generated destructor stub
 }
 
+void Weather::notify() {
+}
+
+void Weather::attach(IObserver *observer) {
+}
+
+void Weather::detach(IObserver *observer) {
+}

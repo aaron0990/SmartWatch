@@ -36,3 +36,8 @@ void TimeController::event_MainView(lv_event_t *e) {
 
 TimeController::~TimeController() {
 }
+
+void TimeController::setTime(const std::shared_ptr<Time> &time)
+{
+	this->time = time;
+}

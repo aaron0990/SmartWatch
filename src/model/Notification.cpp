@@ -16,3 +16,11 @@ Notification::~Notification() {
 	// TODO Auto-generated destructor stub
 }
 
+void Notification::notify() {
+}
+
+void Notification::attach(IObserver *observer) {
+}
+
+void Notification::detach(IObserver *observer) {
+}

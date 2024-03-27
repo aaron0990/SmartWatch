@@ -16,3 +16,11 @@ Time::~Time() {
 	// TODO Auto-generated destructor stub
 }
 
+void Time::notify() {
+}
+
+void Time::attach(IObserver *observer) {
+}
+
+void Time::detach(IObserver *observer) {
+}

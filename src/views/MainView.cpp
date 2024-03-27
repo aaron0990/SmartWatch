@@ -87,7 +87,7 @@ void MainView::initView() {
 	    ui_midContainer = lv_obj_create(ui_MainView);
 	    lv_obj_remove_style_all(ui_midContainer);
 	    lv_obj_set_width(ui_midContainer, lv_pct(100));
-	    lv_obj_set_height(ui_midContainer, lv_pct(60));
+	    lv_obj_set_height(ui_midContainer, lv_pct(40));
 	    lv_obj_set_align(ui_midContainer, LV_ALIGN_CENTER);
 	    lv_obj_set_flex_flow(ui_midContainer, LV_FLEX_FLOW_ROW);
 	    lv_obj_set_flex_align(ui_midContainer, LV_FLEX_ALIGN_SPACE_EVENLY, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
@@ -124,7 +124,7 @@ void MainView::initView() {
 
 	    ui_Panel1 = lv_obj_create(ui_midContainer);
 	    lv_obj_set_width(ui_Panel1, lv_pct(73));
-	    lv_obj_set_height(ui_Panel1, lv_pct(65));
+	    lv_obj_set_height(ui_Panel1, lv_pct(90));
 	    lv_obj_set_x(ui_Panel1, -4);
 	    lv_obj_set_y(ui_Panel1, -17);
 	    lv_obj_set_align(ui_Panel1, LV_ALIGN_CENTER);

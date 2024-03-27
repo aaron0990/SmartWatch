@@ -16,3 +16,11 @@ BluetoothManager::~BluetoothManager() {
 	// TODO Auto-generated destructor stub
 }
 
+void BluetoothManager::notify() {
+}
+
+void BluetoothManager::attach(IObserver *observer) {
+}
+
+void BluetoothManager::detach(IObserver *observer) {
+}

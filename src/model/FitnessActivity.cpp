@@ -16,3 +16,11 @@ FitnessActivity::~FitnessActivity() {
 	// TODO Auto-generated destructor stub
 }
 
+void FitnessActivity::notify() {
+}
+
+void FitnessActivity::attach(IObserver *observer) {
+}
+
+void FitnessActivity::detach(IObserver *observer) {
+}
