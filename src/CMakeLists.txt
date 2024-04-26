@@ -15,6 +15,7 @@ idf_component_register(
 		 "views/themes/ui_themes.c"
 		 "model/LCDManager.cpp"
 		 "model/BluetoothManager.cpp"
+		 "model/BluetoothDataProcess.cpp"
 		 "model/FitnessActivity.cpp"
 		 "model/Weather.cpp"
 		 "model/Time.cpp"
@@ -27,6 +28,7 @@ idf_component_register(
 		 "controllers/Controller.cpp"
 	INCLUDE_DIRS "."
 		 "../include"
-		 
+	REQUIRES
+		 bt
 )
 

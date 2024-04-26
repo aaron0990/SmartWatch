@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: CC0-1.0
  */
 
+#include <BluetoothDataProcess.h>
 #include <stdio.h>
 
 #include "driver/gpio.h"
@@ -73,6 +74,9 @@ extern "C" void app_main(void)
 	auto fitnessActivity = std::make_shared<FitnessActivity>();
 	auto weather = std::make_shared<Weather>();
 	auto notification = std::make_shared<Notification>();
+
+	auto bluetoothManager = std::make_shared<BluetoothManager>();
+	auto bluetoothDataProcess = std::make_shared<BluetoothDataProcess>(bluetoothManager, time, fitnessActivity, weather, notification);
 
 	timeController->setTime(time);
 	fitnessActivityController->setFitnessActivity(fitnessActivity);
