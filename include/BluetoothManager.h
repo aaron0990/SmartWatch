@@ -6,58 +6,62 @@
 #include "ISubject.h"
 #include "IObserver.h"
 #include "esp_gap_ble_api.h"
-#include "esp_gatts_api.h"
+#include "esp_gattc_api.h"
 #include "esp_bt_main.h"
 #include "esp_bt.h"
+#include "esp_gatt_defs.h"
 
-/**
- * AL final, he decidido que el smartwatch implemente un GATT Server. Entonces, los datos del giroscopio y del acelerómetro
- * se enviarán a través de BLE en un servicio. Pero para el caso de otros datos como el clima y las notificaciones,
- * se expondrán en servicio que serán de escritura por parte del cliente y que el smartwatch capturará.
- * Así, podremos leer info del tiempo, notificaciones, etc. desde el móvil al smartwatch.
- */
-
-#define GATTS_SERVICE_UUID_CLIMA       0x00FF
-#define GATTS_CHAR_UUID_TEMPERATURA    0xFF01
-#define GATTS_CHAR_UUID_HUMEDAD        0xFF02
-#define GATTS_CHAR_UUID_CALIDAD_AIRE   0xFF03
-
-#define GATTS_SERVICE_UUID_NOTIFICACIONES  0x0100
-#define GATTS_CHAR_UUID_WHATSAPP           0x1001
-#define GATTS_CHAR_UUID_GOOGLE_TASKS       0x1002
-#define GATTS_CHAR_UUID_EVENTOS            0x1003
+constexpr uint8_t PROFILE_NUM = 1;
+constexpr uint16_t PROFILE_A_APP_ID = 0;
+constexpr uint16_t INVALID_HANDLE = 0;
 
 class BluetoothManager : public ISubject {
-public:
-    BluetoothManager();
-    virtual ~BluetoothManager();
 
-    void startConnection();
-    void stopConnection();
-    void sendData(const std::string& data);
+public:
+    BluetoothManager(const std::string& target_device_name);
+    ~BluetoothManager();
 
     void attach(IObserver *observer) override;
     void detach(IObserver *observer) override;
     void notify() override;
 
-    // Métodos para configurar y manejar los servicios BLE
-    void configureBLEServices();
-    void configureServiceClima();
-    void configureServiceNotificaciones();
+    void initialize();
+    void startScan();
+    void stopScan();
 
 private:
+    static void gap_event_handler(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *param);
+    static void gattc_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t *param);
+    static void gattc_profile_event_handler(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t *param);
+
+    void initialize_bluetooth_controller();
+    void initialize_bluedroid();
+
     std::list<IObserver *> list_observer;
 
-    // Identificadores de interfaz GATT
-    esp_gatt_if_t gatts_if;
-    uint16_t app_id;
+    static std::string remote_device_name;
+    static bool connect;
+    static bool get_server;
+    static esp_gattc_char_elem_t *char_elem_result;
+    static esp_gattc_descr_elem_t *descr_elem_result;
 
-    // Métodos para gestionar específicamente la conexión BLE y la transmisión de datos
-    void _initialize_BLE();
-    void _deinitialize_BLE();
+    static esp_bt_uuid_t remote_filter_service_uuid;
+    static esp_bt_uuid_t remote_filter_char_uuid;
+    static esp_bt_uuid_t notify_descr_uuid;
 
-    static void gattsEventCallback(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t *param);
-    static void gapEventCallback(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *param);
+    static esp_ble_scan_params_t ble_scan_params;
+
+    struct gattc_profile_inst {
+        esp_gattc_cb_t gattc_cb;
+        uint16_t gattc_if;
+        uint16_t app_id;
+        uint16_t conn_id;
+        uint16_t service_start_handle;
+        uint16_t service_end_handle;
+        uint16_t char_handle;
+        esp_bd_addr_t remote_bda;
+    };
+    static struct gattc_profile_inst gl_profile_tab[PROFILE_NUM];
 };
 
 #endif /* SRC_MODEL_BLUETOOTHMANAGER_H_ */
