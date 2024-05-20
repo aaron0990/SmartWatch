@@ -30,5 +30,6 @@ idf_component_register(
 		 "../include"
 	REQUIRES
 		 bt
+		 nvs_flash
 )
 
