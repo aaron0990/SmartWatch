@@ -21,17 +21,18 @@ esp_gattc_char_elem_t *BluetoothManager::char_elem_result = nullptr;
 esp_gattc_descr_elem_t *BluetoothManager::descr_elem_result = nullptr;
 
 // UUID Definitions
-esp_bt_uuid_t BluetoothManager::weather_service_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xAA, 0xAA, 0x00, 0x00 } } };
-esp_bt_uuid_t BluetoothManager::temperature_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xAA, 0xA1, 0x00, 0x00 } } };
-esp_bt_uuid_t BluetoothManager::humidity_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xAA, 0xA2, 0x00, 0x00 } } };
-esp_bt_uuid_t BluetoothManager::air_quality_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xAA, 0xA3, 0x00, 0x00 } } };
-esp_bt_uuid_t BluetoothManager::weather_condition_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xAA, 0xA4, 0x00, 0x00 } } };
+// UUID Definitions
+esp_bt_uuid_t BluetoothManager::weather_service_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x1c, 0x8e, 0x0b, 0x1a, 0x1e, 0x75, 0x05, 0xbf, 0xec, 0x41, 0x00, 0x00, 0xa8, 0x2c, 0xc3, 0xf4 } } };
+esp_bt_uuid_t BluetoothManager::temperature_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x1c, 0x8e, 0x0b, 0x1a, 0x1e, 0x75, 0x05, 0xbf, 0xec, 0x41, 0x01, 0x00, 0xa8, 0x2c, 0xc3, 0xf4 } } };
+esp_bt_uuid_t BluetoothManager::humidity_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x1c, 0x8e, 0x0b, 0x1a, 0x1e, 0x75, 0x05, 0xbf, 0xec, 0x41, 0x02, 0x00, 0xa8, 0x2c, 0xc3, 0xf4 } } };
+esp_bt_uuid_t BluetoothManager::air_quality_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x1c, 0x8e, 0x0b, 0x1a, 0x1e, 0x75, 0x05, 0xbf, 0xec, 0x41, 0x03, 0x00, 0xa8, 0x2c, 0xc3, 0xf4 } } };
+esp_bt_uuid_t BluetoothManager::weather_condition_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x1c, 0x8e, 0x0b, 0x1a, 0x1e, 0x75, 0x05, 0xbf, 0xec, 0x41, 0x04, 0x00, 0xa8, 0x2c, 0xc3, 0xf4 } } };
 
-esp_bt_uuid_t BluetoothManager::notifications_service_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xBB, 0xBB, 0x00, 0x00 } } };
-esp_bt_uuid_t BluetoothManager::notifications_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xBB, 0xB0, 0x00, 0x00 } } };
+esp_bt_uuid_t BluetoothManager::notifications_service_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xeb, 0x64, 0x6e, 0x16, 0x68, 0x38, 0xde, 0xa3, 0x41, 0x4b, 0x00, 0x00, 0x7a, 0x34, 0x73, 0xe0 } } };
+esp_bt_uuid_t BluetoothManager::notifications_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xeb, 0x64, 0x6e, 0x16, 0x68, 0x38, 0xde, 0xa3, 0x41, 0x4b, 0x01, 0x00, 0x7a, 0x34, 0x73, 0xe0 } } };
 
-esp_bt_uuid_t BluetoothManager::tasks_service_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xCC, 0xCC, 0x00, 0x00 } } };
-esp_bt_uuid_t BluetoothManager::tasks_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0xFB, 0x34, 0x9B, 0x5F, 0x80, 0x00, 0x00, 0x80, 0x00, 0x10, 0x00, 0x00, 0xCC, 0xC1, 0x00, 0x00 } } };
+esp_bt_uuid_t BluetoothManager::tasks_service_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x8a, 0x79, 0x47, 0x7e, 0x47, 0xe2, 0x80, 0xbf, 0x91, 0x4e, 0x00, 0x00, 0x98, 0x58, 0x9e, 0x43 } } };
+esp_bt_uuid_t BluetoothManager::tasks_char_uuid = { .len = ESP_UUID_LEN_128, .uuid = { .uuid128 = { 0x8a, 0x79, 0x47, 0x7e, 0x47, 0xe2, 0x80, 0xbf, 0x91, 0x4e, 0x01, 0x00, 0x98, 0x58, 0x9e, 0x43 } } };
 
 esp_ble_scan_params_t BluetoothManager::ble_scan_params = {
     .scan_type = BLE_SCAN_TYPE_ACTIVE,
@@ -245,6 +246,7 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 		{
 			ESP_LOGI(GATTC_TAG, "SEARCH RES: conn_id = %x is primary service %d", p_data->search_res.conn_id, p_data->search_res.is_primary);
 			if (p_data->search_res.srvc_id.uuid.len == ESP_UUID_LEN_128) {
+				ESP_LOGI(GATTC_TAG, "service uuid is 128 bits long");
 				if (memcmp(p_data->search_res.srvc_id.uuid.uuid.uuid128, weather_service_uuid.uuid.uuid128, ESP_UUID_LEN_128) == 0) {
 					get_server = true;
 					gl_profile_tab[PROFILE_A_APP_ID].service_start_handle = p_data->search_res.start_handle;
@@ -255,11 +257,11 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 					gl_profile_tab[PROFILE_A_APP_ID].service_start_handle = p_data->search_res.start_handle;
 					gl_profile_tab[PROFILE_A_APP_ID].service_end_handle = p_data->search_res.end_handle;
 					ESP_LOGI(GATTC_TAG, "Notifications service found");
-				} else if (memcmp(p_data->search_res.srvc_id.uuid.uuid.uuid128, tasks_service_uuid.uuid.uuid128, ESP_UUID_LEN_128) == 0) {
+				/*} else if (memcmp(p_data->search_res.srvc_id.uuid.uuid.uuid128, tasks_service_uuid.uuid.uuid128, ESP_UUID_LEN_128) == 0) {
 					get_server = true;
 					gl_profile_tab[PROFILE_A_APP_ID].service_start_handle = p_data->search_res.start_handle;
 					gl_profile_tab[PROFILE_A_APP_ID].service_end_handle = p_data->search_res.end_handle;
-					ESP_LOGI(GATTC_TAG, "Tasks service found");
+					ESP_LOGI(GATTC_TAG, "Tasks service found");*/
 				}
 			}
 			break;
@@ -290,22 +292,28 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 						ESP_LOGE(GATTC_TAG, "gattc no mem");
 						break;
 					} else {
-						status = esp_ble_gattc_get_char_by_uuid(gattc_if,
-							p_data->search_cmpl.conn_id,
-							gl_profile_tab[PROFILE_A_APP_ID].service_start_handle,
-							gl_profile_tab[PROFILE_A_APP_ID].service_end_handle,
-							temperature_char_uuid,
-							char_elem_result,
-							&count);
-						if (status != ESP_GATT_OK) {
-							ESP_LOGE(GATTC_TAG, "esp_ble_gattc_get_char_by_uuid error");
-							free(char_elem_result);
-							char_elem_result = NULL;
-							break;
-						}
-						if (count > 0) {
-							gl_profile_tab[PROFILE_A_APP_ID].char_handle = char_elem_result[0].char_handle;
-							esp_ble_gattc_register_for_notify(gattc_if, gl_profile_tab[PROFILE_A_APP_ID].remote_bda, char_elem_result[0].char_handle);
+						// Procesar cada característica (temperatura, humedad, calidad del aire, condiciones climáticas)
+						esp_bt_uuid_t char_uuids[] = {temperature_char_uuid, humidity_char_uuid, air_quality_char_uuid, weather_condition_char_uuid};
+						for (int i = 0; i < sizeof(char_uuids)/sizeof(char_uuids[0]); i++) {
+							status = esp_ble_gattc_get_char_by_uuid(gattc_if,
+								p_data->search_cmpl.conn_id,
+								gl_profile_tab[PROFILE_A_APP_ID].service_start_handle,
+								gl_profile_tab[PROFILE_A_APP_ID].service_end_handle,
+								char_uuids[i],
+								char_elem_result,
+								&count);
+							if (status != ESP_GATT_OK) {
+								ESP_LOGE(GATTC_TAG, "esp_ble_gattc_get_char_by_uuid error for characteristic %d", i);
+								free(char_elem_result);
+								char_elem_result = NULL;
+								break;
+							}
+							if (count > 0) {
+								gl_profile_tab[PROFILE_A_APP_ID].char_handle = char_elem_result[0].char_handle;
+								esp_ble_gattc_register_for_notify(gattc_if, gl_profile_tab[PROFILE_A_APP_ID].remote_bda, char_elem_result[0].char_handle);
+								// Leer el valor de la característica
+								esp_ble_gattc_read_char(gattc_if, p_data->search_cmpl.conn_id, char_elem_result[0].char_handle, ESP_GATT_AUTH_REQ_NONE);
+							}
 						}
 						free(char_elem_result);
 					}
@@ -314,7 +322,6 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 				}
 			}
 			break;
-
 		case ESP_GATTC_REG_FOR_NOTIFY_EVT:
 			if (p_data->reg_for_notify.status == ESP_GATT_OK) {
 				ESP_LOGI(GATTC_TAG, "Registered for notify on handle %d", p_data->reg_for_notify.handle);
@@ -322,7 +329,6 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 				ESP_LOGE(GATTC_TAG, "Reg for notify failed, error status = %d", p_data->reg_for_notify.status);
 			}
 			break;
-
 		case ESP_GATTC_NOTIFY_EVT:
 			if (p_data->notify.is_notify) {
 				ESP_LOGI(GATTC_TAG, "Notification received, value len = %d", p_data->notify.value_len);
@@ -331,7 +337,14 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 				ESP_LOGI(GATTC_TAG, "Indication received, value len = %d", p_data->notify.value_len);
 			}
 			break;
-
+		case ESP_GATTC_READ_CHAR_EVT:
+			if (p_data->read.status == ESP_GATT_OK) {
+				ESP_LOGI(GATTC_TAG, "Read char success, value len = %d", p_data->read.value_len);
+				esp_log_buffer_hex(GATTC_TAG, p_data->read.value, p_data->read.value_len);
+			} else {
+				ESP_LOGE(GATTC_TAG, "Read char failed, error status = %d", p_data->read.status);
+			}
+			break;
 		case ESP_GATTC_WRITE_DESCR_EVT:
 			if (p_data->write.status == ESP_GATT_OK) {
 				ESP_LOGI(GATTC_TAG, "Descriptor write successful");
@@ -339,20 +352,15 @@ void BluetoothManager::gattc_profile_event_handler(esp_gattc_cb_event_t event, e
 				ESP_LOGE(GATTC_TAG, "Failed to write descriptor, error %d", p_data->write.status);
 			}
 			break;
-
 		case ESP_GATTC_SRVC_CHG_EVT:
 			ESP_LOGI(GATTC_TAG, "Service changed");
 			break;
-
 		case ESP_GATTC_DISCONNECT_EVT:
 			ESP_LOGI(GATTC_TAG, "Disconnected");
 			break;
-
 		default:
-		{
 			ESP_LOGI(GATTC_TAG, "Unhandled event %d", event);
 			break;
-		}
     }
 }
 
